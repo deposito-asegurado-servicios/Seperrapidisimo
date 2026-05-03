@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Rapidísimo - Cotiza y Rastrea</title>
+    <style>
+        :root {
+            --naranja-principal: #ff6600;
+            --negro-fondo: #121212;
+            --gris-tarjeta: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--negro-fondo);
+            background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            background-color: var(--gris-tarjeta);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 30px 20px;
+            border-radius: 35px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-brand {
+            margin-bottom: 20px;
+        }
+
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-style: italic;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .brand-name span {
+            color: var(--naranja-principal);
+        }
+
+        .icons-header {
+            font-size: 2rem;
+            margin: 15px 0;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #bbb;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            background-color: #f5f5f5;
+            box-sizing: border-box;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            outline: none;
+            color: #333;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            display: block;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Botón Naranja - Identidad Super Rapidísimo */
+        .btn-orange {
+            background-color: var(--naranja-principal);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+        }
+
+        /* Botón Negro/Gris - Estilo secundario */
+        .btn-dark {
+            background-color: #222;
+            color: white;
+            border: 1px solid #444;
+        }
+
+        .footer-info {
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-brand">
+        <div class="brand-name">SUPER <span>RAPIDÍSIMO</span></div>
+        <div class="icons-header">🚛✈️📦</div>
+    </div>
+
+    <h2>Rastrea tu envío</h2>
+    <p>Cotizador de envíos a nivel nacional</p>
+
+    <div class="input-group">
+        <input type="text" id="numGuia" placeholder="Ingresa número de guía">
+        <input type="text" id="destino" placeholder="Ingresa la dirección de destino">
+    </div>
+
+    <button class="btn btn-orange" onclick="validarYEnviar()">Rastrear Envío</button>
+    
+    <button class="btn btn-dark" onclick="irAlChatBot()">Chat Bot</button>
+    
+    <a href="https://www.facebook.com/share/18QBj4DqTC/" target="_blank" class="btn btn-dark">
+        Conoce más sobre nosotros
+    </a>
+
+    <div class="footer-info">
+        &copy; 2026 Super Rapidísimo - Logística Nacional
+    </div>
+</div>
+
+<script>
+    function validarYEnviar() {
+        const guiaInput = document.getElementById('numGuia').value.trim();
+        const destinoInput = document.getElementById('destino').value.trim() || "No especificada";
+        
+        const codigoValido = "0750925931";
+        const telefonoWhatsApp = "573026219839";
+
+        if (guiaInput === codigoValido) {
+            const mensajeTexto = 
+                "Hola, solicito más información del envío en SUPER RAPIDÍSIMO:\n\n" +
+                "📦 Guía: " + codigoValido + "\n" +
+                "📍 Estado: En tránsito\n" +
+                "🏢 Ubicación: Centro logístico\n" +
+                "🎯 Dirección de destino: " + destinoInput + "\n" +
+                "🕒 Última actualización: 2/5/2026, 6:50:31 a. m.\n\n" +
+                "Quedo atento a la información de mi entrega.";
+
+            const mensajeURL = encodeURIComponent(mensajeTexto);
+            window.location.href = "https://wa.me/" + telefonoWhatsApp + "?text=" + mensajeURL;
+        } else if (guiaInput === "") {
+            alert("Por favor, ingresa el número de guía.");
+        } else {
+            alert("Guía no encontrada en el sistema de Super Rapidísimo.");
+        }
+    }
+
+    function irAlChatBot() {
+        window.location.href = "https://site-c95oe23k0.godaddysites.com/";
+    }
+</script>
+
+</body>
+</html>
