@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultar Guía - Depósito Asegurado</title>
+    <title>Super Rapidísimo - Rastreo</title>
     <style>
+        :root {
+            --naranja: #ff6600;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(180deg, #1a4d32 0%, #0d2b1c 100%);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -18,58 +22,44 @@
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.07);
+            background-color: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             padding: 30px 20px;
             border-radius: 40px;
-            width: 90%;
-            max-width: 400px;
+            width: 88%;
+            max-width: 380px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
-        /* Diseño solicitado: Servicio de entrega y Consulta guía */
-        .header-text {
-            margin-bottom: 20px;
+        .header-presentation {
+            margin-bottom: 25px;
         }
 
-        .delivery-title {
-            font-size: 1.2rem;
+        .header-presentation .sub {
+            font-size: 1.1rem;
             margin: 0;
         }
 
-        .consult-title {
-            font-size: 1.5rem;
+        .header-presentation .main {
+            font-size: 1.8rem;
             font-weight: bold;
             margin: 5px 0;
         }
 
-        .icons-lock {
-            font-size: 2rem;
-            margin: 10px 0;
-        }
-
-        h1 {
+        .header-presentation .icons {
             font-size: 2.2rem;
-            margin: 10px 0;
-            font-weight: 700;
-        }
-
-        p {
-            color: #d0d0d0;
-            font-size: 1rem;
-            margin-bottom: 25px;
-            line-height: 1.4;
+            margin-top: 10px;
         }
 
         input {
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             border-radius: 15px;
             border: none;
-            background-color: #f0f4f8;
+            background-color: #f2f2f2;
             box-sizing: border-box;
             font-size: 1rem;
             margin-bottom: 12px;
@@ -79,102 +69,61 @@
 
         .btn {
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             border-radius: 15px;
             border: none;
             font-weight: bold;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             cursor: pointer;
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
+            margin-bottom: 12px;
+            transition: transform 0.2s;
             display: block;
             text-decoration: none;
             text-align: center;
+            text-transform: uppercase;
         }
 
-        .btn:active {
-            transform: scale(0.97);
-        }
+        .btn:active { transform: scale(0.97); }
 
-        .btn-primary {
-            background-color: #00ff85;
-            color: #0d2b1c;
-        }
+        .btn-orange { background-color: var(--naranja); color: white; }
+        .btn-dark { background: linear-gradient(90deg, #333, #444); color: white; border: 1px solid #555; }
 
-        .btn-secondary {
-            background: linear-gradient(90deg, #187a71, #25a093);
-            color: white;
-        }
-
-        .footer-text {
-            color: #8da397;
-            font-size: 0.85rem;
-            margin-top: 15px;
-        }
+        .footer { color: #777; font-size: 0.85rem; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header-text">
-        <div class="delivery-title">(🚛Servicio de entrega✈️)</div>
-        <div class="consult-title">(Consulta guía)</div>
-        <div class="icons-lock">📦🔐📦</div>
+    <div class="header-presentation">
+        <p class="sub">(🚛Servicio de entrega✈️)</p>
+        <p class="main">(Consulta guía)</p>
+        <div class="icons">📦🔐📦</div>
     </div>
 
-    <h1>Consultar guía</h1>
-    <p>Consulta el estado de tu envío con depósito asegurado</p>
+    <input type="text" id="numGuia" placeholder="Ingresa número de guía">
+    <input type="text" id="destino" placeholder="Ingresa la dirección de destino">
 
-    <div class="input-group">
-        <input type="text" id="numGuia" placeholder="Ingresa número de guía">
-        <input type="text" id="destino" placeholder="Ingresa la dirección de destino">
-    </div>
+    <button class="btn btn-orange" onclick="procesarRastreo()">Rastrear Envío</button>
+    <button class="btn btn-dark" onclick="window.location.href='https://site-c95oe23k0.godaddysites.com/'">Chat Bot</button>
+    <a href="https://www.facebook.com/share/18QBj4DqTC/" target="_blank" class="btn btn-dark">Conoce más sobre nosotros</a>
 
-    <button class="btn btn-primary" onclick="validarYEnviar()">Consultar Guía</button>
-    
-    <button class="btn btn-secondary" onclick="irAlChatBot()">Chat Bot</button>
-    
-    <a href="https://www.facebook.com/share/18QBj4DqTC/" target="_blank" class="btn btn-secondary">
-        Conoce más sobre nosotros
-    </a>
-
-    <div class="footer-text">
-        Servicio exclusivo depósito asegurado
-    </div>
+    <div class="footer">Servicio exclusivo depósito asegurado</div>
 </div>
 
 <script>
-    function validarYEnviar() {
-        const guiaInput = document.getElementById('numGuia').value.trim();
-        const destinoInput = document.getElementById('destino').value.trim() || "No especificada";
-        
+    function procesarRastreo() {
+        const guia = document.getElementById('numGuia').value.trim();
+        const destino = document.getElementById('destino').value.trim() || "No especificada";
         const codigoValido = "0750925931";
-        const telefonoWhatsApp = "573026219839";
+        const telefono = "573026219839";
 
-        if (guiaInput === codigoValido) {
-            // Formateo del mensaje solicitado
-            const mensajeTexto = 
-                "Hola, solicito más información del envío:\n\n" +
-                "📦 Guía: " + codigoValido + "\n" +
-                "📍 Estado: En tránsito\n" +
-                "🏢 Ubicación: Centro logístico\n" +
-                "🎯 Dirección de destino: " + destinoInput + "\n" +
-                "🕒 Última actualización: 2/5/2026, 6:50:31 a. m.\n\n" +
-                "Quedo atento a la información.";
-
-            const mensajeURL = encodeURIComponent(mensajeTexto);
-            window.location.href = "https://wa.me/" + telefonoWhatsApp + "?text=" + mensajeURL;
-        } else if (guiaInput === "") {
-            alert("Por favor, ingresa el número de guía.");
+        if (guia === codigoValido) {
+            const texto = `Hola, solicito más información del envío:\n\n📦 Guía: ${codigoValido}\n📍 Estado: En tránsito\n🏢 Ubicación: Centro logístico\n🎯 Dirección de destino: ${destino}\n🕒 Última actualización: 2/5/2026, 6:50:31 a. m.\n\nQuedo atento a la información.`;
+            window.location.href = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
         } else {
-            alert("Número de guía no reconocido. Por favor, verifica el código.");
+            alert("Guía no encontrada. Por favor, verifica el número.");
         }
     }
-
-    function irAlChatBot() {
-        window.location.href = "https://site-c95oe23k0.godaddysites.com/";
-    }
 </script>
-
 </body>
 </html>
