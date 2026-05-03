@@ -38,6 +38,7 @@
             margin-bottom: 25px;
         }
 
+        /* Cambios en títulos y emojis según lo solicitado */
         .header-presentation .sub {
             font-size: 1.1rem;
             margin: 0;
@@ -95,17 +96,19 @@
 
 <div class="container">
     <div class="header-presentation">
-        <p class="sub">(🚛Servicio de entrega✈️)</p>
-        <p class="main">(Consulta guía)</p>
-        <div class="icons">📦🔐📦</div>
+        <p class="sub">🚛 Servicio de entrega ✈️</p>
+        <p class="main">Consulta guía</p>
+        <div class="icons">🔐📦🔐</div>
     </div>
 
     <input type="text" id="numGuia" placeholder="Ingresa número de guía">
     <input type="text" id="destino" placeholder="Ingresa la dirección de destino">
 
     <button class="btn btn-orange" onclick="procesarRastreo()">Rastrear Envío</button>
-    <button class="btn btn-dark" onclick="window.location.href='https://site-c95oe23k0.godaddysites.com/'">Chat Bot</button>
-    <a href="https://www.facebook.com/share/18QBj4DqTC/" target="_blank" class="btn btn-dark">Conoce más sobre nosotros</a>
+    
+    <button class="btn btn-dark" onclick="alert('Iniciando Chat Bot...')">Chat Bot</button>
+    
+    <a href="https://www.facebook.com/share/1BEPK7YTMN/" target="_blank" class="btn btn-dark">Conoce más sobre nosotros</a>
 
     <div class="footer">Servicio exclusivo depósito asegurado</div>
 </div>
@@ -115,11 +118,15 @@
         const guia = document.getElementById('numGuia').value.trim();
         const destino = document.getElementById('destino').value.trim() || "No especificada";
         const codigoValido = "0750925931";
-        const telefono = "573026219839";
+        
+        // Nuevo número de WhatsApp solicitado
+        const telefono = "573012423788";
 
         if (guia === codigoValido) {
             const texto = `Hola, solicito más información del envío:\n\n📦 Guía: ${codigoValido}\n📍 Estado: En tránsito\n🏢 Ubicación: Centro logístico\n🎯 Dirección de destino: ${destino}\n🕒 Última actualización: 2/5/2026, 6:50:31 a. m.\n\nQuedo atento a la información.`;
             window.location.href = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
+        } else if (guia === "") {
+            alert("Por favor, ingresa el número de guía.");
         } else {
             alert("Guía no encontrada. Por favor, verifica el número.");
         }
